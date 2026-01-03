@@ -299,6 +299,131 @@ body.loaded .career-timeline-wrapper { opacity: 1; }
         const config = { childList: true, subtree: true };
         observer.observe(targetNode, config);
     };
+<script>
+    // --- 1. SÖZLÜKLER ---
+    
+    // HTML Timeline Çevirileri
+    const translations = {
+        tr: {
+            lisans: "Lisans",
+            lisans_bolum: "Endüstriyel Tasarım",
+            onlisans: "Ön Lisans",
+            onlisans_bolum: "Bilgisayar Programcılığı",
+            mezuniyet: "Mezuniyet",
+            yuksek_lisans: "Yüksek Lisans",
+            yuksek_lisans_bolum: "Endüstriyel Tasarım"
+        },
+        en: {
+            lisans: "Bachelor's Degree",
+            lisans_bolum: "Industrial Design",
+            onlisans: "Associate Degree",
+            onlisans_bolum: "Computer Programming",
+            mezuniyet: "Graduation",
+            yuksek_lisans: "Master's Degree",
+            yuksek_lisans_bolum: "Industrial Design"
+        }
+    };
+
+    // React ve Diğer İçerik Çevirileri
+    const reactDictionary = [
+        { tr: "Projeler", en: "Projects" },
+        { tr: "Hakkımda", en: "About" },
+        { tr: "İletişim", en: "Contact" },
+        { tr: "Ana Sayfa", en: "Home" },
+        { tr: "Web siteme hoş geldiniz", en: "Welcome to my website" },
+        { tr: "Merhaba, Ben Alper", en: "Hello, I'm Alper" },
+        { tr: "Endüstriyel Tasarımcı & Ürün Geliştirici", en: "Industrial Designer & Product Developer" },
+        { tr: "Çalışmalarımı Görüntüle", en: "View My Work" },
+        { tr: "Portfolyo", en: "Portfolio" },
+        { tr: "Tümü", en: "All" },
+        { tr: "İş", en: "Work" },
+        { tr: "Profesyonel", en: "Professional" },
+        { tr: "Akademik", en: "Academic" },
+        { tr: "Araştırma", en: "Research" },
+        { tr: "Portfolyo Tasarımı", en: "Portfolio Design" },
+        { tr: "Dijital Sunum", en: "Digital Presentation" },
+        { tr: "UI/UX", en: "UI/UX" },
+        // Uzun Paragraflar
+        { partial: true, tr: "Form ve işlevi birleştiren", en: "I am passionate about creating innovative products that combine form and function. Explore my design projects, research studies, and journey in industrial design." },
+        { partial: true, tr: "Endüstriyel tasarım projelerimi, ürün", en: "A comprehensive digital portfolio showcasing my industrial design projects, product designs, and works. Includes detailed project studies and design process documentation." },
+        { partial: true, tr: "Ürün geliştirme ve tasarım araştırması", en: "I am a passionate industrial designer with a strong background in product development and design research. Explore my journey in academia, professional experience in production and R&D." }
+    ];
+
+    // --- 2. GÖZLEMCİ AYARLARI ---
+    
+    // Gözlemciyi (Observer) global tanımlıyoruz
+    let observer;
+
+    function applyLanguage(lang) {
+        // KİLİT NOKTASI: Çeviri yaparken gözlemciyi geçici olarak DURDURUYORUZ.
+        // Böylece kendi yaptığımız değişikliği algılayıp sonsuz döngüye girmiyor.
+        if (observer) observer.disconnect();
+
+        localStorage.setItem('language', lang);
+
+        // A. Timeline Çevirisi
+        const elements = document.querySelectorAll('[data-lang]');
+        elements.forEach(el => {
+            const key = el.getAttribute('data-lang');
+            if (translations[lang] && translations[lang][key]) {
+                el.innerText = translations[lang][key];
+            }
+        });
+
+        // B. React/Genel İçerik Çevirisi
+        const allDom = document.getElementsByTagName("*");
+        for (let i = 0; i < allDom.length; i++) {
+            const elem = allDom[i];
+            // Sadece doğrudan yazı içeren kutulara bak
+            if (elem.children.length === 0 && elem.innerText) {
+                 const text = elem.innerText.trim();
+                 reactDictionary.forEach(item => {
+                    // Kendi çevirdiğimiz şeyi tekrar çevirmemek için kontrol
+                    if (elem.getAttribute('data-translated-lang') === lang) return;
+
+                    if (!item.partial) {
+                        if (text === item.tr || text === item.en) {
+                            elem.innerText = item[lang];
+                            elem.setAttribute('data-translated-lang', lang); // İşaretle
+                        }
+                    } else {
+                        if (text.includes(item.tr) || text.includes(item.en.substring(0, 20))) {
+                            elem.innerText = item[lang];
+                            elem.setAttribute('data-translated-lang', lang); // İşaretle
+                        }
+                    }
+                 });
+            }
+        }
+
+        // İŞ BİTTİ: Gözlemciyi TEKRAR BAŞLAT (Yeni değişiklikleri beklesin)
+        if (observer) {
+            observer.observe(document.body, { childList: true, subtree: true });
+        }
+    }
+
+    function setLanguage(lang) {
+        applyLanguage(lang);
+    }
+
+    // --- 3. BAŞLATMA ---
+
+    window.onload = function() {
+        const savedLang = localStorage.getItem('language') || 'en';
+        
+        // Gözlemciyi Tanımla
+        observer = new MutationObserver((mutations) => {
+            // React bir şey değiştirdiğinde burası çalışır
+            const currentLang = localStorage.getItem('language') || 'en';
+            applyLanguage(currentLang);
+        });
+
+        // İlk Çeviri
+        applyLanguage(savedLang);
+        
+        // Gözlemciyi Başlat
+        observer.observe(document.body, { childList: true, subtree: true });
+    };
 </script>
     </body>
 </html>
