@@ -5,112 +5,46 @@
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Academic & Professional Portfolio | Projects & Research Showcase</title>
-    <meta name="description" content="Explore my comprehensive portfolio featuring innovative projects including mobile applications, production internship work, R&D research, and graduation thesis. Showcasing academic excellence and professional development in software engineering and design." />
+    <meta name="description" content="Explore my comprehensive portfolio featuring innovative projects including mobile applications, production internship work, R&D research, and graduation thesis." />
     <meta name="keywords" content="portfolio, academic projects, mobile application, internship, research, graduation thesis, software development" />
     <link rel="canonical" href="https://yourwebsite.com/" />
-    <meta name="last-modified" content="2024-01-01" />
     
-    <meta property="og:title" content="Academic & Professional Portfolio | Projects & Research Showcase" />
-    <meta property="og:description" content="Explore my comprehensive portfolio featuring innovative projects including mobile applications, production internship work, R&D research, and graduation thesis." />
+    <meta property="og:title" content="Academic & Professional Portfolio" />
+    <meta property="og:description" content="Explore my comprehensive portfolio." />
     <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://yourwebsite.com/" />
-    
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Academic & Professional Portfolio | Projects & Research Showcase" />
-    <meta name="twitter:description" content="Explore my comprehensive portfolio featuring innovative projects including mobile applications, production internship work, R&D research, and graduation thesis." />
     
     <link href="https://cdn.jsdelivr.net/npm/remixicon@4.0.0/fonts/remixicon.css" rel="stylesheet" />
-    
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
     <script type="module" crossorigin src="/alperkose-website/assets/index-d_xqxAZt.js"></script>
     <link rel="stylesheet" crossorigin href="/alperkose-website/assets/index-CC7C7e7Q.css">
+
 <style>
-  /* İLK AÇILIŞTA GİZLE */
-.career-timeline-wrapper { opacity: 0; transition: opacity 0.5s ease; }
-body.loaded .career-timeline-wrapper { opacity: 1; }
-  /* --- MOBİL CİHAZ (TELEFON) AYARLARI --- */
+  /* TİMELİNE STİLLERİ (Senin Tasarımın) */
+  .career-timeline-wrapper { opacity: 0; transition: opacity 0.5s ease; }
+  body.loaded .career-timeline-wrapper { opacity: 1; }
+  
   @media (max-width: 768px) {
-    
-    /* Genel kutu boşluğu */
-    .career-timeline-wrapper {
-      padding: 40px 0 !important;
-    }
-    
-    /* Dikey sıralama ve hizalama */
-    .career-timeline { 
-      flex-direction: column !important; 
-      align-items: flex-start !important; 
-      padding-left: 20px !important; 
-    }
-    
-    /* Çizgiyi inceltip konumunu ayarlıyoruz */
-    .timeline-line { 
-      width: 2px !important; 
-      height: 100% !important; 
-      top: 0 !important; 
-      left: 26px !important; /* Çizgi konumu */
-      background: linear-gradient(180deg, transparent, rgba(255,255,255,0.15), transparent) !important; 
-    }
-    
-    /* Kutu ayarları */
-    .timeline-item { 
-      width: 100% !important; 
-      text-align: left !important; 
-      margin-bottom: 25px !important; /* Öğeler arası boşluk ideal seviyeye çekildi */
-      padding-left: 35px !important; /* Çizgiden uzaklık */
-      display: flex !important;
-      flex-direction: column !important;
-      justify-content: center !important;
-      min-height: 50px !important; /* Her öğe için minimum yükseklik */
-    }
-    
-    /* Noktayı biraz küçültüyoruz (Mobilde kaba durmasın) */
-    .timeline-item .dot { 
-      width: 12px !important;
-      height: 12px !important;
-      position: absolute !important; 
-      left: 0 !important; 
-      top: 5px !important; 
-      margin: 0 !important;
-      border-width: 2px !important; /* Çerçeve kalınlığı inceltildi */
-    }
-
-    /* --- YAZI BOYUTLARI (KÜÇÜLTÜLDÜ) --- */
-    
-    /* Yıl Yazısı: Masaüstündeki gibi şık ama küçük */
-    .year-text { 
-      font-size: 1rem !important; /* Yaklaşık 16px */
-      margin-bottom: 2px !important; 
-      line-height: 1.2 !important;
-    }
-    
-    /* Açıklama Başlığı */
-    .desc-text { 
-      font-size: 0.9rem !important; /* Yaklaşık 14px */
-      margin-top: 2px !important; 
-      line-height: 1.3 !important;
-    }
-    
-    /* Alt küçük gri yazı */
-    .small-text { 
-      font-size: 0.75rem !important; /* Yaklaşık 12px */
-      color: #9ca3af !important;
-    }
+    .career-timeline-wrapper { padding: 40px 0 !important; }
+    .career-timeline { flex-direction: column !important; align-items: flex-start !important; padding-left: 20px !important; }
+    .timeline-line { width: 2px !important; height: 100% !important; top: 0 !important; left: 26px !important; background: linear-gradient(180deg, transparent, rgba(255,255,255,0.15), transparent) !important; }
+    .timeline-item { width: 100% !important; text-align: left !important; margin-bottom: 25px !important; padding-left: 35px !important; display: flex !important; flex-direction: column !important; justify-content: center !important; min-height: 50px !important; }
+    .timeline-item .dot { width: 12px !important; height: 12px !important; position: absolute !important; left: 0 !important; top: 5px !important; margin: 0 !important; border-width: 2px !important; }
+    .year-text { font-size: 1rem !important; margin-bottom: 2px !important; line-height: 1.2 !important; }
+    .desc-text { font-size: 0.9rem !important; margin-top: 2px !important; line-height: 1.3 !important; }
+    .small-text { font-size: 0.75rem !important; color: #9ca3af !important; }
   }
-
-  /* --- MASAÜSTÜ İÇİN HOVER (DOKUNMA) --- */
   .timeline-item:hover { transform: translateY(-5px); transition: transform 0.3s ease; }
   .timeline-item:hover .year-text { color: #f97316 !important; }
 </style>
   </head>
   <body>
+    
     <div id="root"></div>
     
 
 <div class="career-timeline-wrapper" style="background-color: #111827; width: 100%; display: flex; justify-content: center; padding: 80px 0; margin: 0; color: white;">
-  
   <div class="career-timeline" style="position: relative; display: flex; justify-content: space-between; width: 100%; max-width: 1100px; padding: 0 20px; box-sizing: border-box;">
     
     <div class="timeline-line" style="position: absolute; top: 40px; left: 40px; right: 40px; height: 2px; background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent); z-index: 0;"></div>
@@ -151,6 +85,7 @@ body.loaded .career-timeline-wrapper { opacity: 1; }
     </div>
   </div>
 </div>
+
 <script>
   window.addEventListener('load', function() {
     document.body.classList.add('loaded');
@@ -164,9 +99,7 @@ body.loaded .career-timeline-wrapper { opacity: 1; }
 </div>
 
 <script>
-    // --- 1. SÖZLÜKLER ---
-    
-    // HTML Timeline Çevirileri
+    // 1. TIMELINE ÇEVİRİLERİ (Sabit HTML)
     const translations = {
         tr: {
             lisans: "Lisans",
@@ -188,37 +121,47 @@ body.loaded .career-timeline-wrapper { opacity: 1; }
         }
     };
 
-    // React ve Diğer İçerik Çevirileri
+    // 2. EKSİK KALAN VE SONRADAN YÜKLENEN KISIMLAR İÇİN SÖZLÜK
     const reactDictionary = [
+        // MENÜ
         { tr: "Projeler", en: "Projects" },
         { tr: "Hakkımda", en: "About" },
         { tr: "İletişim", en: "Contact" },
         { tr: "Ana Sayfa", en: "Home" },
+        
+        // GİRİŞ KISMI
         { tr: "Web siteme hoş geldiniz", en: "Welcome to my website" },
         { tr: "Merhaba, Ben Alper", en: "Hello, I'm Alper" },
         { tr: "Endüstriyel Tasarımcı & Ürün Geliştirici", en: "Industrial Designer & Product Developer" },
         { tr: "Çalışmalarımı Görüntüle", en: "View My Work" },
+        
+        // PORTFOLYO & BUTONLAR
         { tr: "Portfolyo", en: "Portfolio" },
         { tr: "Tümü", en: "All" },
         { tr: "İş", en: "Work" },
         { tr: "Profesyonel", en: "Professional" },
         { tr: "Akademik", en: "Academic" },
         { tr: "Araştırma", en: "Research" },
-        { tr: "Portfolyo Tasarımı", en: "Portfolio Design" },
-        { tr: "Dijital Sunum", en: "Digital Presentation" },
-        { tr: "UI/UX", en: "UI/UX" },
-        // Uzun Paragraflar
-        { partial: true, tr: "Form ve işlevi birleştiren", en: "I am passionate about creating innovative products that combine form and function. Explore my design projects, research studies, and journey in industrial design." },
-        { partial: true, tr: "Endüstriyel tasarım projelerimi, ürün", en: "A comprehensive digital portfolio showcasing my industrial design projects, product designs, and works. Includes detailed project studies and design process documentation." },
-        { partial: true, tr: "Ürün geliştirme ve tasarım araştırması", en: "I am a passionate industrial designer with a strong background in product development and design research. Explore my journey in academia, professional experience in production and R&D." }
+        { tr: "Detayları Gör", en: "View Details" },
+        { tr: "Tıklayın", en: "Click" },
+        { tr: "Mobil Uygulama Tasarımı", en: "Mobile App Design" },
+        { tr: "Üretim Stajı", en: "Production Internship" },
+        
+        // İLETİŞİM KISMI
+        { tr: "Hadi Bağlanalım", en: "Let's Connect" },
+        { tr: "Yeni tasarım projeleri, fırsatlar veya işbirlikleri hakkında konuşmaya her zaman açığım.", en: "I am always open to discussing new design projects, opportunities or collaborations." },
+        
+        // UZUN METİNLER (Kısmi Eşleşme)
+        { partial: true, tr: "Kullanıcı merkezli tasarım", en: "I am an expert in user-centered design, product development, and design research. Throughout my career, I have worked on various projects ranging from digital interfaces to physical products." },
+        { partial: true, tr: "Form ve işlevi birleştiren", en: "I am passionate about creating innovative products that combine form and function. Explore my design projects." },
+        { partial: true, tr: "Üretim ortamında uygulamalı", en: "Hands-on industrial design internship experience in a production environment. Collaborated with engineering teams on production-oriented design projects." },
+        { partial: true, tr: "Sezgisel kullanıcı deneyimi", en: "A user-centered mobile application interface design project focused on intuitive user experience and modern visual design principles." }
     ];
-
-    // --- 2. ÇEVİRİ FONKSİYONU ---
 
     function applyLanguage(lang) {
         localStorage.setItem('language', lang);
 
-        // A. Timeline Çevirisi
+        // A. HTML İÇİNDEKİLERİ ÇEVİR (Timeline)
         const elements = document.querySelectorAll('[data-lang]');
         elements.forEach(el => {
             const key = el.getAttribute('data-lang');
@@ -227,27 +170,29 @@ body.loaded .career-timeline-wrapper { opacity: 1; }
             }
         });
 
-        // B. React/Genel İçerik Çevirisi
+        // B. SONRADAN YÜKLENENLERİ ÇEVİR (React)
         const allDom = document.getElementsByTagName("*");
         for (let i = 0; i < allDom.length; i++) {
             const elem = allDom[i];
-            // Sadece doğrudan yazı içeren kutulara bak
-            if (elem.children.length === 0 && elem.innerText) {
+            // Sadece yazı içeren elementlere bak
+            if (elem.children.length === 0 && elem.innerText && elem.innerText.trim().length > 0) {
                  const text = elem.innerText.trim();
-                 // Boşsa atla
-                 if(!text) continue;
-
+                 
                  reactDictionary.forEach(item => {
-                    // Zaten çevrildiyse (data-lang ile işaretlenmişse) atla
-                    if(elem.hasAttribute('data-lang')) return;
+                    // Zaten çevrilmişse atla
+                    if(elem.getAttribute('data-translated') === lang) return;
 
                     if (!item.partial) {
+                        // Tam eşleşme
                         if (text === item.tr || text === item.en) {
                             elem.innerText = item[lang];
+                            elem.setAttribute('data-translated', lang);
                         }
                     } else {
-                        if (text.includes(item.tr) || text.includes(item.en.substring(0, 20))) {
+                        // Kısmi eşleşme (Uzun yazılar için)
+                        if (text.includes(item.tr.substring(0, 15)) || text.includes(item.en.substring(0, 15))) {
                             elem.innerText = item[lang];
+                            elem.setAttribute('data-translated', lang);
                         }
                     }
                  });
@@ -259,29 +204,29 @@ body.loaded .career-timeline-wrapper { opacity: 1; }
         applyLanguage(lang);
     }
 
-    // --- 3. GÜVENLİ ZAMANLAYICI (Kilitleme Yapmaz) ---
-    // Sayfa açıldıktan sonra birkaç saniye boyunca çeviriyi dener ve durur.
-    
+    // --- PERFORMANSLI ÇALIŞTIRMA MANTIĞI ---
     window.onload = function() {
         const savedLang = localStorage.getItem('language') || 'en';
         
         // 1. Hemen çalıştır
         applyLanguage(savedLang);
 
-        // 2. Sayfa tam yüklenene kadar 10 kere, yarım saniyede bir kontrol et.
-        let count = 0;
+        // 2. React yüklenirken 2 saniye boyunca birkaç kez kontrol et (Donma yapmaz)
+        let counter = 0;
         const interval = setInterval(() => {
             const currentLang = localStorage.getItem('language') || 'en';
             applyLanguage(currentLang);
-            count++;
-            if (count > 10) clearInterval(interval); // 10 kere denedikten sonra tamamen durur.
-        }, 500);
-        
-        // 3. Garanti olsun diye 3 saniye sonra son bir vuruş yap
-        setTimeout(() => {
-             const currentLang = localStorage.getItem('language') || 'en';
-             applyLanguage(currentLang);
-        }, 3000);
+            counter++;
+            if(counter > 8) clearInterval(interval); // 8 kere denedikten sonra durur.
+        }, 250);
+
+        // 3. Kullanıcı sayfada bir yere tıklarsa (filtre vs.) tekrar tetikle
+        document.body.addEventListener('click', () => {
+            setTimeout(() => {
+                const currentLang = localStorage.getItem('language') || 'en';
+                applyLanguage(currentLang);
+            }, 100);
+        });
     };
 </script>
   </body>
