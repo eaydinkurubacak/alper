@@ -107,7 +107,7 @@
     <button onclick="setLanguage('en')" style="border: none; background: transparent; cursor: pointer; font-weight: bold; padding: 5px;">🇬🇧 EN</button>
 </div>
 
-<!-- GELİŞMİŞ ÇEVİRİ KODU (AKILLI TARAMA + TAM METİN) -->
+<!-- SİHİRLİ ÇEVİRİ KODU (TAM CÜMLELERLE) -->
 <script>
     // 1. TIMELINE ÇEVİRİLERİ (SABİT HTML)
     const translations = {
@@ -131,8 +131,7 @@
         }
     };
 
-    // 2. SİTE İÇERİĞİ SÖZLÜĞÜ (HER ŞEY DAHİL)
-    // Partial: true olanlar cümlenin bir kısmını yakalayıp tamamını çevirir.
+    // 2. SİTE İÇERİĞİ SÖZLÜĞÜ (TÜM METİNLER TAM HALİYLE)
     const reactDictionary = [
         // --- MENÜ ---
         { tr: "Projeler", en: "Projects" },
@@ -145,43 +144,45 @@
         { tr: "Merhaba, Ben Alper", en: "Hello, I'm Alper" },
         { tr: "Endüstriyel Tasarımcı & Ürün Geliştirici", en: "Industrial Designer & Product Developer" },
         { tr: "Çalışmalarımı Görüntüle", en: "View My Work" },
-        // Hero Uzun Metin
+        // Hero Uzun Açıklama (TAM CÜMLE)
         { 
             partial: true, 
-            tr: "Form ve işlevi birleştiren", 
+            tr: "Form ve işlevi birleştiren yenilikçi ürünler oluşturma konusunda tutkuluyum. Tasarım projelerimi, araştırma çalışmalarımı ve endüstriyel tasarımdaki yolculuğumu keşfedin.", 
             en: "I am passionate about creating innovative products that combine form and function. Explore my design projects, research studies, and journey in industrial design." 
         },
 
         // --- PORTFOLYO & FİLTRELER ---
         { tr: "Öne Çıkan", en: "Featured" },
         { tr: "Portfolyo", en: "Portfolio" },
-        // Portfolyo Altı Açıklamaları
+        // Öne Çıkan Uzun Açıklama (TAM CÜMLE)
         { 
             partial: true, 
-            tr: "Becerilerimi ve vizyonumu sergileyen", 
+            tr: "Becerilerimi ve vizyonumu sergileyen tasarım araştırmalarım, profesyonel çalışmalarım ve yenilikçi projelerimden oluşan bir koleksiyon", 
             en: "A collection of my design research, professional work, and innovative projects showcasing my skills and vision." 
         },
+        // Portfolyo Uzun Açıklama (TAM CÜMLE)
         { 
             partial: true, 
-            tr: "Endüstriyel tasarım projelerimi", 
+            tr: "Endüstriyel tasarım projelerimi, ürün tasarımlarımı ve çalışmalarımı sergileyen kapsamlı bir dijital portfolyo. Detaylı proje çalışmaları ve tasarım süreci dokümantasyonu içerir.", 
             en: "A comprehensive digital portfolio showcasing my industrial design projects, product designs, and works. Includes detailed project studies and design process documentation." 
         },
         
-        // Filtreler ve Etiketler
+        // Filtreler
         { tr: "Tümü", en: "All" },
         { tr: "İş", en: "Work" },
         { tr: "Profesyonel", en: "Professional" },
         { tr: "Akademik", en: "Academic" },
         { tr: "Araştırma", en: "Research" },
 
-        // --- KARTLAR VE DETAYLAR ---
+        // --- KARTLAR ---
         { tr: "Detayları Gör", en: "View Details" },
         { tr: "Tıklayın", en: "Click" },
         { tr: "Mobil Uygulama Tasarımı", en: "Mobile App Design" },
         { tr: "Üretim Stajı", en: "Production Internship" },
         { tr: "Ar-Ge Stajı", en: "R&D Internship" },
         { tr: "Bitirme Tezi", en: "Graduation Thesis" },
-        // Teknik Terimler
+        
+        // Kart Teknik Terimler
         { tr: "Mobil UI/UX", en: "Mobile UI/UX" },
         { tr: "Etkileşim Tasarımı", en: "Interaction Design" },
         { tr: "Kullanıcı Ara Yüzü", en: "User Interface" },
@@ -197,54 +198,51 @@
         { tr: "Dijital Sunum", en: "Digital Presentation" },
         { tr: "UI/UX", en: "UI/UX" },
 
-        // --- KART AÇIKLAMALARI (Uzun) ---
+        // Kart Açıklamaları (TAM METİNLER)
         { 
             partial: true, 
-            tr: "Sezgisel kullanıcı deneyimi", 
-            en: "A user-centered mobile application interface design project focused on intuitive user experience and modern visual design principles." 
+            tr: "Sezgisel kullanıcı deneyimi, modern görsel tasarım ilkeleri ve mobil platformlar için kusursuz etkileşim kalıplarına odaklanan kullanıcı merkezli mobil uygulama arayüz tasarımı projesi.", 
+            en: "A user-centered mobile application interface design project focused on intuitive user experience, modern visual design principles and seamless interaction patterns for mobile platforms." 
         },
         { 
             partial: true, 
-            tr: "Üretim ortamında uygulamalı", 
-            en: "Hands-on industrial design internship experience in a production environment. Collaborated with engineering teams on production-oriented design projects." 
+            tr: "Üretim ortamında uygulamalı endüstriyel tasarım stajı deneyimi, gerçek ürün geliştirme, üretim süreçleri ve üretime yönelik tasarım projeleri üzerinde mühendislik ekipleriyle işbirliği.", 
+            en: "Hands-on industrial design internship experience in a production environment, collaborating with engineering teams on real product development, manufacturing processes, and design-for-manufacturing projects." 
         },
         { 
             partial: true, 
-            tr: "Yenilikçi ürün tasarımı", 
-            en: "R&D internship focused on innovative product design, material exploration, prototyping new concepts, and researching emerging design technologies." 
+            tr: "Yenilikçi ürün tasarımı, malzeme keşfi, yeni konseptlerin prototiplenmesi ve gelişmekte olan tasarım teknolojileri ve metodolojilerinin araştırılmasına odaklanan araştırma ve geliştirme stajı.", 
+            en: "Research and development internship focused on innovative product design, material exploration, prototyping of new concepts, and investigation of emerging design technologies and methodologies." 
         },
         { 
             partial: true, 
-            tr: "Endüstriyel tasarımda ileri", 
-            en: "Comprehensive graduation thesis exploring advanced topics in industrial design, presenting original research on design methodology and user-centered principles." 
+            tr: "Endüstriyel tasarımda ileri konuları araştıran, tasarım metodolojisi, kullanıcı merkezli tasarım ilkeleri ve yenilikçi ürün geliştirme yaklaşımları üzerine özgün araştırma sunan kapsamlı bitirme tezi.", 
+            en: "Comprehensive graduation thesis exploring advanced topics in industrial design, presenting original research on design methodology, user-centered design principles, and innovative product development approaches." 
         },
 
-        // --- HAKKIMDA BÖLÜMÜ ---
+        // --- HAKKIMDA ---
         { tr: "Tasarım Projesi", en: "Design Projects" },
         { tr: "Staj", en: "Internships" },
         { tr: "20+", en: "20+" },
         { tr: "2", en: "2" },
-        // Hakkımda Uzun Yazıları
+        // Hakkımda Uzun Yazı 1 (TAM METİN)
         { 
             partial: true, 
-            tr: "Ürün geliştirme ve tasarım araştırması", 
+            tr: "Ürün geliştirme ve tasarım araştırması konusunda güçlü bir geçmişe sahip tutkulu bir endüstriyel tasarımcıyım. Yolculuğum akademik mükemmelliği, üretim ve Ar-Ge'deki profesyonel stajları ve yenilikçi tasarım projelerini içeriyor.", 
             en: "I am a passionate industrial designer with a strong background in product development and design research. My journey includes academic excellence, professional internships in production and R&D, and innovative design projects." 
         },
+        // Hakkımda Uzun Yazı 2 (TAM METİN)
         { 
             partial: true, 
-            tr: "Kullanıcı merkezli tasarım", 
-            en: "I am an expert in user-centered design, product development, and design research. Throughout my career, I have worked on various projects ranging from digital interfaces to physical products. I am dedicated to creating meaningful designs that improve people's lives through thoughtful problem-solving." 
+            tr: "Kullanıcı merkezli tasarım, ürün geliştirme ve tasarım araştırması konularında uzmanım. Kariyerim boyunca, dijital arayüzlerden fiziksel ürünlere kadar çeşitli projelerde çalıştım. Düşünceli problem çözme ve yenilikçi düşünme yoluyla insanların hayatlarını iyileştiren ve kolaylık sağlayan anlamlı tasarımlar oluşturmaya kendimi adadım.", 
+            en: "I am an expert in user-centered design, product development, and design research. Throughout my career, I have worked on various projects ranging from digital interfaces to physical products. I am dedicated to creating meaningful designs that improve people's lives and provide convenience through thoughtful problem-solving and innovative thinking." 
         },
 
-        // --- İLETİŞİM BÖLÜMÜ (ÖZEL İSTEK) ---
+        // --- İLETİŞİM ---
+        { tr: "Hadi Bağlanalım", en: "Let's Connect" },
         { 
             partial: true,
-            tr: "Hadi Bağlanalım", 
-            en: "Let's Connect" 
-        },
-        { 
-            partial: true,
-            tr: "Yeni tasarım projeleri", 
+            tr: "Yeni tasarım projeleri, fırsatlar veya işbirlikleri hakkında konuşmaya her zaman açığım. Benimle iletişime geçin ve birlikte harika bir şeyler oluşturalım!", 
             en: "I am always open to discussing new design projects, opportunities or collaborations. Contact me and let's create something great together!" 
         }
     ];
@@ -258,7 +256,7 @@
         try { localStorage.setItem(key, val); } catch(e) { /* ignore */ }
     }
 
-    // NORMALİZASYON (Boşlukları Temizleme)
+    // NORMALİZASYON (Görünmez Boşlukları Temizleme)
     function normalize(str) {
         return str.replace(/\s+/g, ' ').trim();
     }
@@ -285,6 +283,7 @@
                  const text = normalize(elem.innerText); // Yazıyı temizle
                  
                  reactDictionary.forEach(item => {
+                    // Daha önce çevrildiyse pas geç (Performans)
                     if(elem.getAttribute('data-translated') === lang) return;
 
                     if (!item.partial) {
@@ -294,8 +293,11 @@
                             elem.setAttribute('data-translated', lang);
                         }
                     } else {
-                        // Kısmi Eşleşme (İlk 15-20 karakter)
-                        if (text.includes(item.tr.substring(0, 15)) || text.includes(item.en.substring(0, 15))) {
+                        // Kısmi Eşleşme (İlk 20 karakter)
+                        const searchTr = normalize(item.tr).substring(0, 20);
+                        const searchEn = normalize(item.en).substring(0, 20);
+
+                        if (text.includes(searchTr) || text.includes(searchEn)) {
                             elem.innerText = item[lang];
                             elem.setAttribute('data-translated', lang);
                         }
@@ -324,7 +326,7 @@
             if(counter > 15) clearInterval(interval);
         }, 500);
 
-        // Tıklama, kaydırma vb. durumlarda tekrar kontrol et
+        // Tıklama olursa tekrar kontrol et
         document.body.addEventListener('click', () => {
             setTimeout(() => {
                 const currentLang = safeGetItem('language') || 'en';
