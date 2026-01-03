@@ -164,7 +164,7 @@ body.loaded .career-timeline-wrapper { opacity: 1; }
 </div>
 
 <script>
-    // 1. KISIM: Senin eklediğin Timeline (HTML içinde olanlar)
+    // 1. KISIM: HTML Timeline Çevirileri
     const translations = {
         tr: {
             lisans: "Lisans",
@@ -186,19 +186,56 @@ body.loaded .career-timeline-wrapper { opacity: 1; }
         }
     };
 
-    // 2. KISIM: Üst Menü (React tarafından sonradan eklenenler)
-    // Buradaki kelimeler sitede gördüğünle BİREBİR aynı olmalı (Büyük/küçük harf dahil)
+    // 2. KISIM: React Tarafından Oluşturulan İçerikler
+    // GÖZLEMCİ SÖZLÜĞÜ (Avcı Modu için Kelimeler)
     const reactDictionary = [
+        // --- MENÜ ---
         { tr: "Projeler", en: "Projects" },
-        { tr: "Hakkımda", en: "About" }, 
+        { tr: "Hakkımda", en: "About" },
         { tr: "İletişim", en: "Contact" },
-        { tr: "Ana Sayfa", en: "Home" } 
+        { tr: "Ana Sayfa", en: "Home" },
+
+        // --- HERO (GİRİŞ) BÖLÜMÜ ---
+        { tr: "Web siteme hoş geldiniz", en: "Welcome to my website" },
+        { tr: "Merhaba, Ben Alper", en: "Hello, I'm Alper" },
+        { tr: "Endüstriyel Tasarımcı & Ürün Geliştirici", en: "Industrial Designer & Product Developer" },
+        { tr: "Çalışmalarımı Görüntüle", en: "View My Work" },
+        
+        // --- PORTFOLYO BÖLÜMÜ ---
+        { tr: "Portfolyo", en: "Portfolio" },
+        { tr: "Tümü", en: "All" },
+        { tr: "İş", en: "Work" },
+        { tr: "Profesyonel", en: "Professional" },
+        { tr: "Akademik", en: "Academic" },
+        { tr: "Araştırma", en: "Research" },
+        { tr: "Portfolyo Tasarımı", en: "Portfolio Design" },
+        { tr: "Dijital Sunum", en: "Digital Presentation" },
+        { tr: "UI/UX", en: "UI/UX" },
+
+        // --- UZUN PARAGRAFLAR (Akıllı Eşleşme) ---
+        // Bu cümlelerin başını yakalasa yeter, tamamını değiştirecek.
+        { 
+            partial: true, 
+            tr: "Form ve işlevi birleştiren", 
+            en: "I am passionate about creating innovative products that combine form and function. Explore my design projects, research studies, and journey in industrial design." 
+        },
+        { 
+            partial: true, 
+            tr: "Endüstriyel tasarım projelerimi, ürün", 
+            en: "A comprehensive digital portfolio showcasing my industrial design projects, product designs, and works. Includes detailed project studies and design process documentation." 
+        },
+        { 
+            partial: true, 
+            tr: "Ürün geliştirme ve tasarım araştırması", 
+            en: "I am a passionate industrial designer with a strong background in product development and design research. Explore my journey in academia, professional experience in production and R&D." 
+        }
     ];
 
+    // Dili Uygulayan Fonksiyon
     function applyLanguage(lang) {
         localStorage.setItem('language', lang);
 
-        // A. Timeline Çevirisi (data-lang etiketiyle)
+        // A. Timeline Çevirisi (data-lang etiketiyle) - HTML elementleri
         const elements = document.querySelectorAll('[data-lang]');
         elements.forEach(el => {
             const key = el.getAttribute('data-lang');
@@ -207,15 +244,30 @@ body.loaded .career-timeline-wrapper { opacity: 1; }
             }
         });
 
-        // B. Menü Çevirisi (Metin Arama yöntemiyle)
+        // B. React Çevirisi (Anlık Avcı Modu) - Sayfadaki tüm yazıları tarar
         const allDom = document.getElementsByTagName("*");
         for (let i = 0; i < allDom.length; i++) {
             const elem = allDom[i];
-            // Sadece doğrudan yazı içeren kutulara bak
+            
+            // Sadece doğrudan yazı içeren kutulara bak (içinde başka kutu olmayan)
             if (elem.children.length === 0 && elem.innerText) {
+                 const text = elem.innerText.trim();
+                 
                  reactDictionary.forEach(item => {
-                    if (elem.innerText.trim() === item.tr || elem.innerText.trim() === item.en) {
-                        elem.innerText = item[lang];
+                    // 1. Yöntem: Birebir Eşleşme (Kısa başlıklar için)
+                    if (!item.partial) {
+                        if (text === item.tr || text === item.en) {
+                            elem.innerText = item[lang];
+                            // Çevrildi işaretini koy ki tekrar tekrar çevirmesin (Performans için)
+                            elem.setAttribute('data-translated', 'true');
+                        }
+                    }
+                    // 2. Yöntem: İçinde Geçiyorsa (Uzun paragraflar için)
+                    else {
+                        if (text.includes(item.tr) || text.includes(item.en.substring(0, 20))) {
+                            elem.innerText = item[lang];
+                            elem.setAttribute('data-translated', 'true');
+                        }
                     }
                  });
             }
@@ -227,21 +279,25 @@ body.loaded .career-timeline-wrapper { opacity: 1; }
         applyLanguage(lang);
     }
 
-    // Sayfa Yüklendiğinde
+    // --- GELİŞMİŞ GÖZLEMCİ (GECİKMEYİ ÖNLEYEN SİSTEM) ---
+    // Bu sistem, sayfaya yeni bir yazı düştüğü anda milisaniye içinde yakalar.
+    // Artık saniyelik gecikme olmaz.
+    const observer = new MutationObserver((mutations) => {
+        const savedLang = localStorage.getItem('language') || 'en';
+        applyLanguage(savedLang);
+    });
+
+    // Sayfa Yüklendiğinde Başlat
     window.onload = function() {
         const savedLang = localStorage.getItem('language') || 'en';
         
-        // 1. Hemen çevirmeyi dene
+        // 1. İlk çeviriyi yap
         applyLanguage(savedLang);
 
-        // 2. React menüyü geç yüklerse diye 1.5 saniye boyunca kontrol et
-        let attempts = 0;
-        const interval = setInterval(() => {
-             const currentLang = localStorage.getItem('language') || 'en';
-             applyLanguage(currentLang);
-             attempts++;
-             if (attempts > 5) clearInterval(interval); // 5 kere denedikten sonra dur
-        }, 300); 
+        // 2. Gözlemciyi başlat (Artık sürekli takip edecek)
+        const targetNode = document.body; // Tüm sayfayı izle
+        const config = { childList: true, subtree: true };
+        observer.observe(targetNode, config);
     };
 </script>
     </body>
