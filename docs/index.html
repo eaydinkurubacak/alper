@@ -9,10 +9,12 @@
     <meta name="keywords" content="portfolio, academic projects, mobile application, internship, research, graduation thesis, software development" />
     <link rel="canonical" href="https://yourwebsite.com/" />
     
+    <!-- Open Graph & Twitter -->
     <meta property="og:title" content="Academic & Professional Portfolio" />
     <meta property="og:description" content="Explore my comprehensive portfolio." />
     <meta property="og:type" content="website" />
     
+    <!-- CSS & Fonts -->
     <link href="https://cdn.jsdelivr.net/npm/remixicon@4.0.0/fonts/remixicon.css" rel="stylesheet" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -20,35 +22,38 @@
     <script type="module" crossorigin src="/alperkose-website/assets/index-d_xqxAZt.js"></script>
     <link rel="stylesheet" crossorigin href="/alperkose-website/assets/index-CC7C7e7Q.css">
 
-<style>
-  /* TİMELİNE STİLLERİ (Senin Tasarımın) */
-  .career-timeline-wrapper { opacity: 0; transition: opacity 0.5s ease; }
-  body.loaded .career-timeline-wrapper { opacity: 1; }
-  
-  @media (max-width: 768px) {
-    .career-timeline-wrapper { padding: 40px 0 !important; }
-    .career-timeline { flex-direction: column !important; align-items: flex-start !important; padding-left: 20px !important; }
-    .timeline-line { width: 2px !important; height: 100% !important; top: 0 !important; left: 26px !important; background: linear-gradient(180deg, transparent, rgba(255,255,255,0.15), transparent) !important; }
-    .timeline-item { width: 100% !important; text-align: left !important; margin-bottom: 25px !important; padding-left: 35px !important; display: flex !important; flex-direction: column !important; justify-content: center !important; min-height: 50px !important; }
-    .timeline-item .dot { width: 12px !important; height: 12px !important; position: absolute !important; left: 0 !important; top: 5px !important; margin: 0 !important; border-width: 2px !important; }
-    .year-text { font-size: 1rem !important; margin-bottom: 2px !important; line-height: 1.2 !important; }
-    .desc-text { font-size: 0.9rem !important; margin-top: 2px !important; line-height: 1.3 !important; }
-    .small-text { font-size: 0.75rem !important; color: #9ca3af !important; }
-  }
-  .timeline-item:hover { transform: translateY(-5px); transition: transform 0.3s ease; }
-  .timeline-item:hover .year-text { color: #f97316 !important; }
-</style>
+    <!-- BİZİM EKLEDİĞİMİZ STİLLER -->
+    <style>
+      .career-timeline-wrapper { opacity: 0; transition: opacity 0.5s ease; }
+      body.loaded .career-timeline-wrapper { opacity: 1; }
+      
+      @media (max-width: 768px) {
+        .career-timeline-wrapper { padding: 40px 0 !important; }
+        .career-timeline { flex-direction: column !important; align-items: flex-start !important; padding-left: 20px !important; }
+        .timeline-line { width: 2px !important; height: 100% !important; top: 0 !important; left: 26px !important; background: linear-gradient(180deg, transparent, rgba(255,255,255,0.15), transparent) !important; }
+        .timeline-item { width: 100% !important; text-align: left !important; margin-bottom: 25px !important; padding-left: 35px !important; display: flex !important; flex-direction: column !important; justify-content: center !important; min-height: 50px !important; }
+        .timeline-item .dot { width: 12px !important; height: 12px !important; position: absolute !important; left: 0 !important; top: 5px !important; margin: 0 !important; border-width: 2px !important; }
+        .year-text { font-size: 1rem !important; margin-bottom: 2px !important; line-height: 1.2 !important; }
+        .desc-text { font-size: 0.9rem !important; margin-top: 2px !important; line-height: 1.3 !important; }
+        .small-text { font-size: 0.75rem !important; color: #9ca3af !important; }
+      }
+      .timeline-item:hover { transform: translateY(-5px); transition: transform 0.3s ease; }
+      .timeline-item:hover .year-text { color: #f97316 !important; }
+    </style>
   </head>
   <body>
     
+    <!-- REACT UYGULAMASI -->
     <div id="root"></div>
     
 
+<!-- TIMELINE (ZAMAN ÇİZELGESİ) - SABİT HTML -->
 <div class="career-timeline-wrapper" style="background-color: #111827; width: 100%; display: flex; justify-content: center; padding: 80px 0; margin: 0; color: white;">
   <div class="career-timeline" style="position: relative; display: flex; justify-content: space-between; width: 100%; max-width: 1100px; padding: 0 20px; box-sizing: border-box;">
     
     <div class="timeline-line" style="position: absolute; top: 40px; left: 40px; right: 40px; height: 2px; background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent); z-index: 0;"></div>
     
+    <!-- 2020 LİSANS -->
     <div class="timeline-item" style="position: relative; text-align: center; width: 22%; z-index: 1;">
       <span class="year-text" style="font-size: 1.4rem; font-weight: 700; color: #f8fafc; display: block; margin-bottom: 15px;">2020</span>
       <span class="dot" style="display: block; width: 16px; height: 16px; background-color: #f97316; border-radius: 50%; margin: 0 auto 15px auto; border: 3px solid #111827; box-shadow: 0 0 10px rgba(249, 115, 22, 0.4); position: relative; z-index: 2;"></span>
@@ -58,6 +63,7 @@
       </p>
     </div>
 
+    <!-- 2022 ÖN LİSANS -->
     <div class="timeline-item" style="position: relative; text-align: center; width: 22%; z-index: 1;">
       <span class="year-text" style="font-size: 1.4rem; font-weight: 700; color: #f8fafc; display: block; margin-bottom: 15px;">2022</span>
       <span class="dot" style="display: block; width: 16px; height: 16px; background-color: #f97316; border-radius: 50%; margin: 0 auto 15px auto; border: 3px solid #111827; box-shadow: 0 0 10px rgba(249, 115, 22, 0.4); position: relative; z-index: 2;"></span>
@@ -67,6 +73,7 @@
       </p>
     </div>
 
+    <!-- 2025 MEZUNİYET -->
     <div class="timeline-item" style="position: relative; text-align: center; width: 22%; z-index: 1;">
       <span class="year-text" style="font-size: 1.4rem; font-weight: 700; color: #f8fafc; display: block; margin-bottom: 15px;">2025</span>
       <span class="dot" style="display: block; width: 16px; height: 16px; background-color: #f97316; border-radius: 50%; margin: 0 auto 15px auto; border: 3px solid #111827; box-shadow: 0 0 10px rgba(249, 115, 22, 0.4); position: relative; z-index: 2;"></span>
@@ -75,6 +82,7 @@
       </p>
     </div>
 
+    <!-- 2026 YÜKSEK LİSANS -->
     <div class="timeline-item" style="position: relative; text-align: center; width: 22%; z-index: 1;">
       <span class="year-text" style="font-size: 1.4rem; font-weight: 700; color: #f8fafc; display: block; margin-bottom: 15px;">2026</span>
       <span class="dot" style="display: block; width: 16px; height: 16px; background-color: #f97316; border-radius: 50%; margin: 0 auto 15px auto; border: 3px solid #111827; box-shadow: 0 0 10px rgba(249, 115, 22, 0.4); position: relative; z-index: 2;"></span>
@@ -92,14 +100,16 @@
   });
 </script>
 
+<!-- DİL BUTONLARI -->
 <div id="lang-switcher" style="position: fixed; bottom: 20px; right: 20px; z-index: 9999; background: white; padding: 10px; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); font-family: sans-serif;">
     <button onclick="setLanguage('tr')" style="border: none; background: transparent; cursor: pointer; font-weight: bold; padding: 5px;">🇹🇷 TR</button>
     <span style="color: #ccc;">|</span>
     <button onclick="setLanguage('en')" style="border: none; background: transparent; cursor: pointer; font-weight: bold; padding: 5px;">🇬🇧 EN</button>
 </div>
 
+<!-- SİHİRLİ ÇEVİRİ SİSTEMİ -->
 <script>
-    // 1. TIMELINE ÇEVİRİLERİ (Sabit HTML)
+    // 1. TIMELINE İÇİN (Sabit HTML)
     const translations = {
         tr: {
             lisans: "Lisans",
@@ -121,21 +131,22 @@
         }
     };
 
-    // 2. EKSİK KALAN VE SONRADAN YÜKLENEN KISIMLAR İÇİN SÖZLÜK
+    // 2. SİTE İÇERİĞİ İÇİN SÖZLÜK (Tam Cümleler)
+    // Buraya Türkçe karşılıkların UZUN ve TAM hallerini yazdım.
     const reactDictionary = [
-        // MENÜ
+        // --- MENÜ ---
         { tr: "Projeler", en: "Projects" },
         { tr: "Hakkımda", en: "About" },
         { tr: "İletişim", en: "Contact" },
         { tr: "Ana Sayfa", en: "Home" },
         
-        // GİRİŞ KISMI
+        // --- GİRİŞ (HERO) ---
         { tr: "Web siteme hoş geldiniz", en: "Welcome to my website" },
         { tr: "Merhaba, Ben Alper", en: "Hello, I'm Alper" },
         { tr: "Endüstriyel Tasarımcı & Ürün Geliştirici", en: "Industrial Designer & Product Developer" },
         { tr: "Çalışmalarımı Görüntüle", en: "View My Work" },
         
-        // PORTFOLYO & BUTONLAR
+        // --- PORTFOLYO ---
         { tr: "Portfolyo", en: "Portfolio" },
         { tr: "Tümü", en: "All" },
         { tr: "İş", en: "Work" },
@@ -143,25 +154,45 @@
         { tr: "Akademik", en: "Academic" },
         { tr: "Araştırma", en: "Research" },
         { tr: "Detayları Gör", en: "View Details" },
-        { tr: "Tıklayın", en: "Click" },
         { tr: "Mobil Uygulama Tasarımı", en: "Mobile App Design" },
         { tr: "Üretim Stajı", en: "Production Internship" },
         
-        // İLETİŞİM KISMI
+        // --- İLETİŞİM ---
         { tr: "Hadi Bağlanalım", en: "Let's Connect" },
-        { tr: "Yeni tasarım projeleri, fırsatlar veya işbirlikleri hakkında konuşmaya her zaman açığım.", en: "I am always open to discussing new design projects, opportunities or collaborations." },
+        { 
+            tr: "Yeni tasarım projeleri, fırsatlar veya işbirlikleri hakkında konuşmaya her zaman açığım.", 
+            en: "I am always open to discussing new design projects, opportunities or collaborations." 
+        },
         
-        // UZUN METİNLER (Kısmi Eşleşme)
-        { partial: true, tr: "Kullanıcı merkezli tasarım", en: "I am an expert in user-centered design, product development, and design research. Throughout my career, I have worked on various projects ranging from digital interfaces to physical products." },
-        { partial: true, tr: "Form ve işlevi birleştiren", en: "I am passionate about creating innovative products that combine form and function. Explore my design projects." },
-        { partial: true, tr: "Üretim ortamında uygulamalı", en: "Hands-on industrial design internship experience in a production environment. Collaborated with engineering teams on production-oriented design projects." },
-        { partial: true, tr: "Sezgisel kullanıcı deneyimi", en: "A user-centered mobile application interface design project focused on intuitive user experience and modern visual design principles." }
+        // --- UZUN PARAGRAFLAR (Eksik görünen kısımlar burası) ---
+        // Burada İngilizce metnin bir kısmını yakalayıp TAM TÜRKÇE halini basıyoruz.
+        
+        { 
+            partial: true, 
+            tr: "Form ve işlevi birleştiren, yenilikçi ürünler yaratma konusunda tutkuluyum. Endüstriyel tasarım yolculuğumu, araştırma çalışmalarımı ve tasarım projelerimi keşfedin.", 
+            en: "I am passionate about creating innovative products that combine form and function" 
+        },
+        { 
+            partial: true, 
+            tr: "Endüstriyel tasarım projelerimi, ürün tasarımlarımı ve çalışmalarımı sergileyen kapsamlı bir dijital portfolyo. Detaylı proje çalışmalarını ve tasarım süreçlerini içerir.", 
+            en: "A comprehensive digital portfolio showcasing my industrial design projects" 
+        },
+        { 
+            partial: true, 
+            tr: "Ben Alper Köse. Tasarım ve yazılım ile ilgileniyorum. Ürün geliştirme ve tasarım araştırması konusunda güçlü bir geçmişe sahip tutkulu bir endüstriyel tasarımcıyım.", 
+            en: "I am Alper Kose" 
+        },
+        { 
+            partial: true, 
+            tr: "Kullanıcı merkezli tasarım, ürün geliştirme ve tasarım araştırması konularında uzmanım. Kariyerim boyunca dijital arayüzlerden fiziksel ürünlere kadar çeşitli projelerde yer aldım.", 
+            en: "I am an expert in user-centered design" 
+        }
     ];
 
     function applyLanguage(lang) {
         localStorage.setItem('language', lang);
 
-        // A. HTML İÇİNDEKİLERİ ÇEVİR (Timeline)
+        // A. TIMELINE ÇEVİRİSİ
         const elements = document.querySelectorAll('[data-lang]');
         elements.forEach(el => {
             const key = el.getAttribute('data-lang');
@@ -170,27 +201,27 @@
             }
         });
 
-        // B. SONRADAN YÜKLENENLERİ ÇEVİR (React)
+        // B. İÇERİK ÇEVİRİSİ
         const allDom = document.getElementsByTagName("*");
         for (let i = 0; i < allDom.length; i++) {
             const elem = allDom[i];
-            // Sadece yazı içeren elementlere bak
+            
             if (elem.children.length === 0 && elem.innerText && elem.innerText.trim().length > 0) {
                  const text = elem.innerText.trim();
                  
                  reactDictionary.forEach(item => {
-                    // Zaten çevrilmişse atla
                     if(elem.getAttribute('data-translated') === lang) return;
 
                     if (!item.partial) {
-                        // Tam eşleşme
+                        // Tam Eşleşme
                         if (text === item.tr || text === item.en) {
                             elem.innerText = item[lang];
                             elem.setAttribute('data-translated', lang);
                         }
                     } else {
-                        // Kısmi eşleşme (Uzun yazılar için)
-                        if (text.includes(item.tr.substring(0, 15)) || text.includes(item.en.substring(0, 15))) {
+                        // Kısmi Eşleşme (Uzun Yazılar İçin)
+                        // İngilizcenin veya Türkçenin başından 15-20 harf tutuyorsa değiştir
+                        if (text.includes(item.tr.substring(0, 20)) || text.includes(item.en.substring(0, 20))) {
                             elem.innerText = item[lang];
                             elem.setAttribute('data-translated', lang);
                         }
@@ -204,28 +235,28 @@
         applyLanguage(lang);
     }
 
-    // --- PERFORMANSLI ÇALIŞTIRMA MANTIĞI ---
+    // --- DONMA YAPMAYAN GÜVENLİ BAŞLATMA ---
     window.onload = function() {
         const savedLang = localStorage.getItem('language') || 'en';
         
         // 1. Hemen çalıştır
         applyLanguage(savedLang);
 
-        // 2. React yüklenirken 2 saniye boyunca birkaç kez kontrol et (Donma yapmaz)
+        // 2. Sayfa yüklenirken 5 saniye boyunca hafifçe kontrol et
         let counter = 0;
         const interval = setInterval(() => {
             const currentLang = localStorage.getItem('language') || 'en';
             applyLanguage(currentLang);
             counter++;
-            if(counter > 8) clearInterval(interval); // 8 kere denedikten sonra durur.
-        }, 250);
+            if(counter > 10) clearInterval(interval);
+        }, 500);
 
-        // 3. Kullanıcı sayfada bir yere tıklarsa (filtre vs.) tekrar tetikle
+        // 3. Tıklama olursa tekrar kontrol et
         document.body.addEventListener('click', () => {
             setTimeout(() => {
                 const currentLang = localStorage.getItem('language') || 'en';
                 applyLanguage(currentLang);
-            }, 100);
+            }, 200);
         });
     };
 </script>
