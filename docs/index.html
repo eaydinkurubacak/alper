@@ -38,9 +38,11 @@
       }
 
       /* READDY LİNKİNİ PASİF YAPMA (Tıklanmaz Hale Getirir) */
+      /* Footer'daki tüm 'a' etiketlerini hedefler, eğer özel bir class yoksa */
+      /* Ancak spesifik olarak 'Readdy' linkini hedeflemek için: */
       a[href*="readdy.ai"] {
         pointer-events: none !important; /* Tıklamayı engeller */
-        cursor: default !important;      /* İmleci normal yapar */
+        cursor: default !important;      /* İmleci normal yapar (el işareti çıkmaz) */
         text-decoration: none !important; /* Alt çizgiyi kaldırır */
         color: inherit !important;       /* Rengi korur */
       }
@@ -126,7 +128,7 @@
     <button onclick="setLanguage('en')" style="border: none; background: transparent; cursor: pointer; font-weight: bold; padding: 5px;">🇬🇧 EN</button>
 </div>
 
-<!-- ÇEVİRİ SİSTEMİ (BOŞLUK DÜZELTMELİ) -->
+<!-- ÇEVİRİ SİSTEMİ (NİHAİ - TÜM ÖZELLİKLER DAHİL) -->
 <script>
     // 1. TIMELINE ÇEVİRİLERİ (SABİT HTML)
     const translations = {
@@ -150,9 +152,10 @@
         }
     };
 
-    // 2. SİTE İÇERİĞİ SÖZLÜĞÜ (BOŞLUKLAR DÜZELTİLDİ)
+    // 2. SİTE İÇERİĞİ SÖZLÜĞÜ (TÜM METİNLER + BOŞLUK DÜZELTMESİ)
     const reactDictionary = [
-        // --- İSİM ALANI ---
+        // --- İSİM ALANI (BOŞLUKLU VERSİYONLAR) ---
+        // Buradaki boşluklar "BenAlper" birleşmesini önler.
         { tr: "Merhaba, Ben ", en: "Hello, I'm " }, 
         { tr: "Merhaba, ", en: "Hello, " },
         { tr: "Ben Alper", en: "I'm Alper" },
@@ -176,11 +179,8 @@
         },
 
         // --- PORTFOLYO & FİLTRELER ---
-        { tr: "Öne Çıkan ", en: "Featured" }, // SONUNA BOŞLUK EKLENDİ
         { tr: "Öne Çıkan", en: "Featured" },
-        { tr: "Öne Çıkan Projeler", en: "Featured Projects" }, // TAM CÜMLE EKLENDİ
         { tr: "Portfolyo", en: "Portfolio" },
-        
         // Öne Çıkan Uzun Açıklama
         { 
             partial: true, 
@@ -285,7 +285,8 @@
 
     // NORMALİZASYON (Görünmez Boşlukları Temizleme)
     function normalize(str) {
-        return str.replace(/\s+/g, ' ').trim();
+        // Normal boşluk ve non-breaking space (NBSP) temizliği
+        return str.replace(/[\s\u00A0]+/g, ' ').trim();
     }
 
     function applyLanguage(lang) {
@@ -305,6 +306,17 @@
         for (let i = 0; i < allDom.length; i++) {
             const elem = allDom[i];
             
+            // Eğer readdy linki ise (veya genel footer linkleri) pasif yap
+            if (elem.tagName === 'A' && (elem.href.includes('readdy.ai') || elem.innerText.includes('Alper Köse'))) {
+                // Sadece footer'daki linki hedeflemek için ek kontrol yapılabilir ama bu genel çözüm de çalışır
+                if(elem.closest('footer') || elem.closest('.footer')) {
+                    elem.style.pointerEvents = 'none';
+                    elem.style.cursor = 'default';
+                    elem.style.textDecoration = 'none';
+                    elem.onclick = function(e){ e.preventDefault(); return false; };
+                }
+            }
+
             // Elementin içindeki TÜM metin parçalarını (Text Nodes) kontrol et
             for (let j = 0; j < elem.childNodes.length; j++) {
                 const node = elem.childNodes[j];
