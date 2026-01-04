@@ -24,14 +24,14 @@
 
     <!-- EK STİLLER (GECİKMEYİ ÖNLEYEN AYARLAR DAHİL) -->
     <style>
-      /* Başlangıçta hem şeffaf hem de GÖRÜNMEZ yapıyoruz (Bozuk görüntü gelmesin diye) */
+      /* Başlangıçta görünmez yapıyoruz */
       .career-timeline-wrapper { 
         opacity: 0; 
         visibility: hidden; 
         transition: opacity 0.6s ease, visibility 0.6s; 
       }
       
-      /* Sayfa hazır olduğunda (loaded sınıfı eklenince) göster */
+      /* Sayfa hazır olunca görünür yapıyoruz */
       body.loaded .career-timeline-wrapper { 
         opacity: 1; 
         visibility: visible; 
@@ -118,7 +118,7 @@
     <button onclick="setLanguage('en')" style="border: none; background: transparent; cursor: pointer; font-weight: bold; padding: 5px;">🇬🇧 EN</button>
 </div>
 
-<!-- ÇEVİRİ SİSTEMİ (HATA KORUMALI + MERHABA ALPER DÜZELTMESİ) -->
+<!-- ÇEVİRİ SİSTEMİ (NİHAİ - PARÇALI METİN DESTEĞİ) -->
 <script>
     // 1. TIMELINE ÇEVİRİLERİ (SABİT HTML)
     const translations = {
@@ -142,8 +142,16 @@
         }
     };
 
-    // 2. SİTE İÇERİĞİ SÖZLÜĞÜ (TÜM METİNLER TAM HALİYLE)
+    // 2. SİTE İÇERİĞİ SÖZLÜĞÜ (TÜM METİNLER TAM VE PARÇALI HALİYLE)
     const reactDictionary = [
+        // --- İSİM ALANI (BURAYA DİKKAT) ---
+        // Eğer "Merhaba, Ben" ayrı, "Alper" ayrıysa bunları yakalar:
+        { tr: "Merhaba, Ben", en: "Hello, I'm", partial: true },
+        { tr: "Merhaba,", en: "Hello," },
+        { tr: "Ben Alper", en: "I'm Alper" },
+        // Tam cümle hali:
+        { tr: "Merhaba, Ben Alper", en: "Hello, I'm Alper" },
+
         // --- MENÜ ---
         { tr: "Projeler", en: "Projects" },
         { tr: "Hakkımda", en: "About" },
@@ -152,7 +160,6 @@
         
         // --- GİRİŞ (HERO) ---
         { tr: "Web siteme hoş geldiniz", en: "Welcome to my website" },
-        { tr: "Merhaba, Ben Alper", en: "Hello, I'm Alper", partial: true }, // Partial: true ekledik ki garantili çevrilsin
         { tr: "Endüstriyel Tasarımcı & Ürün Geliştirici", en: "Industrial Designer & Product Developer" },
         { tr: "Çalışmalarımı Görüntüle", en: "View My Work" },
         // Hero Uzun Açıklama
@@ -209,7 +216,7 @@
         { tr: "Dijital Sunum", en: "Digital Presentation" },
         { tr: "UI/UX", en: "UI/UX" },
 
-        // Kart Açıklamaları (TAM METİNLER)
+        // Kart Açıklamaları
         { 
             partial: true, 
             tr: "Sezgisel kullanıcı deneyimi, modern görsel tasarım ilkeleri ve mobil platformlar için kusursuz etkileşim kalıplarına odaklanan kullanıcı merkezli mobil uygulama arayüz tasarımı projesi.", 
@@ -258,7 +265,7 @@
         }
     ];
 
-    // GÜVENLİ DEPOLAMA (Hata Vermez)
+    // GÜVENLİ DEPOLAMA
     function safeGetItem(key) {
         try { return localStorage.getItem(key); } catch(e) { return 'en'; }
     }
