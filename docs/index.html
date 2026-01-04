@@ -22,7 +22,7 @@
     <script type="module" crossorigin src="/alperkose-website/assets/index-d_xqxAZt.js"></script>
     <link rel="stylesheet" crossorigin href="/alperkose-website/assets/index-CC7C7e7Q.css">
 
-    <!-- EK STİLLER (GECİKMEYİ ÖNLEYEN VE LİNK KALDIRAN AYARLAR DAHİL) -->
+    <!-- EK STİLLER -->
     <style>
       /* Timeline Başlangıçta Görünmez */
       .career-timeline-wrapper { 
@@ -37,14 +37,12 @@
         visibility: visible; 
       }
 
-      /* READDY LİNKİNİ PASİF YAPMA (Tıklanmaz Hale Getirir) */
-      /* Footer'daki tüm 'a' etiketlerini hedefler, eğer özel bir class yoksa */
-      /* Ancak spesifik olarak 'Readdy' linkini hedeflemek için: */
+      /* READDY LİNKİNİ PASİF YAPMA */
       a[href*="readdy.ai"] {
-        pointer-events: none !important; /* Tıklamayı engeller */
-        cursor: default !important;      /* İmleci normal yapar (el işareti çıkmaz) */
-        text-decoration: none !important; /* Alt çizgiyi kaldırır */
-        color: inherit !important;       /* Rengi korur */
+        pointer-events: none !important;
+        cursor: default !important;
+        text-decoration: none !important;
+        color: inherit !important;
       }
       
       @media (max-width: 768px) {
@@ -116,7 +114,6 @@
 
 <script>
   window.addEventListener('load', function() {
-    // Sayfa tamamen yüklendiğinde 'loaded' sınıfını ekle
     document.body.classList.add('loaded');
   });
 </script>
@@ -128,7 +125,7 @@
     <button onclick="setLanguage('en')" style="border: none; background: transparent; cursor: pointer; font-weight: bold; padding: 5px;">🇬🇧 EN</button>
 </div>
 
-<!-- ÇEVİRİ SİSTEMİ (NİHAİ - TÜM ÖZELLİKLER DAHİL) -->
+<!-- SİHİRLİ ÇEVİRİ SİSTEMİ (BOŞLUK VE EKSİK METİN DÜZELTMELİ) -->
 <script>
     // 1. TIMELINE ÇEVİRİLERİ (SABİT HTML)
     const translations = {
@@ -152,10 +149,20 @@
         }
     };
 
-    // 2. SİTE İÇERİĞİ SÖZLÜĞÜ (TÜM METİNLER + BOŞLUK DÜZELTMESİ)
+    // 2. SİTE İÇERİĞİ SÖZLÜĞÜ (TÜM SORUNLAR GİDERİLDİ)
     const reactDictionary = [
-        // --- İSİM ALANI (BOŞLUKLU VERSİYONLAR) ---
-        // Buradaki boşluklar "BenAlper" birleşmesini önler.
+        // --- ÖNE ÇIKAN PROJELER DÜZELTMESİ (BOŞLUK EKLENDİ) ---
+        // Burada İngilizce karşılığa BOŞLUK ekledik ki sonraki kelimeye yapışmasın.
+        { tr: "Öne Çıkan", en: "Featured " }, 
+        { tr: "Öne Çıkan Projeler", en: "Featured Projects" },
+
+        // --- HADİ BAĞLANALIM DÜZELTMESİ (PARÇALI VE TAM) ---
+        // Partial: true ile her türlü yakalarız
+        { tr: "Hadi Bağlanalım", en: "Let's Connect", partial: true },
+        { tr: "Hadi", en: "Let's" },
+        { tr: "Bağlanalım", en: "Connect" },
+
+        // --- İSİM ALANI ---
         { tr: "Merhaba, Ben ", en: "Hello, I'm " }, 
         { tr: "Merhaba, ", en: "Hello, " },
         { tr: "Ben Alper", en: "I'm Alper" },
@@ -178,8 +185,7 @@
             en: "I am passionate about creating innovative products that combine form and function. Explore my design projects, research studies, and journey in industrial design." 
         },
 
-        // --- PORTFOLYO & FİLTRELER ---
-        { tr: "Öne Çıkan", en: "Featured" },
+        // --- PORTFOLYO ---
         { tr: "Portfolyo", en: "Portfolio" },
         // Öne Çıkan Uzun Açıklama
         { 
@@ -209,7 +215,7 @@
         { tr: "Ar-Ge Stajı", en: "R&D Internship" },
         { tr: "Bitirme Tezi", en: "Graduation Thesis" },
         
-        // Kart Teknik Terimler
+        // Teknik Terimler
         { tr: "Mobil UI/UX", en: "Mobile UI/UX" },
         { tr: "Etkileşim Tasarımı", en: "Interaction Design" },
         { tr: "Kullanıcı Ara Yüzü", en: "User Interface" },
@@ -265,8 +271,7 @@
             en: "I am an expert in user-centered design, product development, and design research. Throughout my career, I have worked on various projects ranging from digital interfaces to physical products. I am dedicated to creating meaningful designs that improve people's lives and provide convenience through thoughtful problem-solving and innovative thinking." 
         },
 
-        // --- İLETİŞİM ---
-        { tr: "Hadi Bağlanalım", en: "Let's Connect" },
+        // --- İLETİŞİM UZUN METNİ ---
         { 
             partial: true,
             tr: "Yeni tasarım projeleri, fırsatlar veya işbirlikleri hakkında konuşmaya her zaman açığım. Benimle iletişime geçin ve birlikte harika bir şeyler oluşturalım!", 
@@ -285,8 +290,7 @@
 
     // NORMALİZASYON (Görünmez Boşlukları Temizleme)
     function normalize(str) {
-        // Normal boşluk ve non-breaking space (NBSP) temizliği
-        return str.replace(/[\s\u00A0]+/g, ' ').trim();
+        return str.replace(/\s+/g, ' ').trim();
     }
 
     function applyLanguage(lang) {
@@ -306,9 +310,8 @@
         for (let i = 0; i < allDom.length; i++) {
             const elem = allDom[i];
             
-            // Eğer readdy linki ise (veya genel footer linkleri) pasif yap
+            // Eğer readdy linki ise pasif yap
             if (elem.tagName === 'A' && (elem.href.includes('readdy.ai') || elem.innerText.includes('Alper Köse'))) {
-                // Sadece footer'daki linki hedeflemek için ek kontrol yapılabilir ama bu genel çözüm de çalışır
                 if(elem.closest('footer') || elem.closest('.footer')) {
                     elem.style.pointerEvents = 'none';
                     elem.style.cursor = 'default';
@@ -317,7 +320,7 @@
                 }
             }
 
-            // Elementin içindeki TÜM metin parçalarını (Text Nodes) kontrol et
+            // Elementin içindeki TÜM metin parçalarını kontrol et
             for (let j = 0; j < elem.childNodes.length; j++) {
                 const node = elem.childNodes[j];
                 
@@ -357,14 +360,11 @@
 
     // --- BAŞLATMA ---
     window.onload = function() {
-        // Görüntü kaymasını önlemek için 'loaded' sınıfını ekle
         document.body.classList.add('loaded');
 
         const savedLang = safeGetItem('language') || 'en';
-        
         applyLanguage(savedLang);
 
-        // React yüklenirken 5 saniye boyunca kontrol et
         let counter = 0;
         const interval = setInterval(() => {
             const currentLang = safeGetItem('language') || 'en';
@@ -373,7 +373,6 @@
             if(counter > 15) clearInterval(interval);
         }, 500);
 
-        // Tıklama olursa tekrar kontrol et
         document.body.addEventListener('click', () => {
             setTimeout(() => {
                 const currentLang = safeGetItem('language') || 'en';
